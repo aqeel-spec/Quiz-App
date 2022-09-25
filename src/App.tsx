@@ -32,13 +32,30 @@ function App() {
     setloading(false);
   };
 
-  const nextQuestion = async() => {};
+  const nextQuestion = async() => {
+    const nextQuestion = number + 1;
+    if (nextQuestion === TOTAL_QUESTION){
+      setGameOver(true);
+
+    }
+    else {
+      setNumber(nextQuestion);
+    }
+  };
   
   const chackAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (!gameOver ){
       const answer = e.currentTarget.value;
 
       const correct = questions[number].correct_answer === answer; 
+      if (correct) setScore(pre => pre +1)
+      const answerObject = {
+        question: questions[number].question,
+        answer,
+        correct,
+        correctAnswer: questions[number].correct_answer
+      }
+      setUserAnswer(prev => [...prev, answerObject])
     }
   };
 
@@ -54,7 +71,7 @@ function App() {
 
         {!gameOver ? (
         <p className='score'>
-          Score :
+          Score : {score}
         </p>):null}
 
         {loading ? (
