@@ -14,6 +14,15 @@ type AnswerObject = {
 }
 
 function App() {
+//   const myStyle={
+//     backgroundImage: 
+// "url('https://media.geeksforgeeks.org/wp-content/uploads/rk.png')",
+//     height:`100%`,
+//     marginTop:'-70px',
+//     fontSize:'50px',
+//     backgroundSize: 'cover',
+//     backgroundRepeat: 'no-repeat',
+// };
 
   const [loading , setloading] = useState(false);
   const [questions , setQuestions] = useState<QuestionState[]>([]);
@@ -66,7 +75,7 @@ function App() {
     <>  
        <GlobalStyle />
       <Wrapper> 
-        <h1>Quize</h1>
+        <h1>Quiz App By Aqeel Shahzad</h1>
 
         {gameOver || userAnswer.length === TOTAL_QUESTION ? (
         <button className='start' onClick={startQuiz}>
@@ -75,7 +84,7 @@ function App() {
 
         {!gameOver ? (
         <p className='score'>
-          Score : {score}
+         Your Current Score : {score}
         </p>):null}
 
         {loading ? (
@@ -99,7 +108,11 @@ function App() {
            Next
         </button>
         ):null }
+       
+        {gameOver || userAnswer.length === TOTAL_QUESTION ? (
+         <h2>Click the above button to Start Quize</h2>):null}
       </Wrapper>
+      
     </>  
   );
 }
